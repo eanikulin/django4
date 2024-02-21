@@ -13,6 +13,13 @@ class MyClass:
         self.b = b
 
 
+data_db = [
+    {"id": 1, "title": "Анджелина Джоли", "content": "Биография Анджелины", "is_published": True},
+    {"id": 2, "title": "Петрова Оля", "content": "Биография Оли", "is_published": False},
+    {"id": 3, "title": "Лобкова Катя", "content": "Биография Кати", "is_published": True},
+]
+
+
 def index(request):
     # t = render_to_string("women/index.html")
     # return HttpResponse(t)
@@ -24,7 +31,8 @@ def index(request):
         "set": {1, 2, 3, 5},
         "dict": {"key1": "value1", "key2": "value2"},
         "obj": MyClass(10, 20),
-        "url": slugify("The main page")
+        "url": slugify("The main page"),
+        "posts": data_db,
     }
     return render(request, "women/index.html", context=data)
 
