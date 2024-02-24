@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title|upper }}</title>
-</head>
-<body>
-<p>{{ menu.1 }}</p>
-<p>{{ menu|join:", " }}</p>
-<p>{{ menu|first }}</p>
-<p>{{ float|add:"50" }}</p>
-<p>{{ float|divisibleby:"3" }}</p>
-<p>{{ set }}</p>
-<p>{{ lst }}</p>
-<p>{{ lst|length }}</p>
-<p>{{ "the World Page"|slugify }}</p>
-<p>{{ url }}</p>
-<p>{{ dict.key1 }}</p>
-<p>{{ obj.a }}</p>
-<h1>{{ title|capfirst }}</h1>
-<h1>{{ title|cut:"а"|cut:"ц" }}</h1>
-<h1>{{ non_exist_title|default:"Отсутствующая переменная" }}</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'women/includes/nav.html' only %}
+{#<p>{{ menu.1 }}</p>#}
+{#<p>{{ menu|join:", " }}</p>#}
+{#<p>{{ menu|first }}</p>#}
+{#<p>{{ float|add:"50" }}</p>#}
+{#<p>{{ float|divisibleby:"3" }}</p>#}
+{#<p>{{ set }}</p>#}
+{#<p>{{ lst }}</p>#}
+{#<p>{{ lst|length }}</p>#}
+{#<p>{{ "the World Page"|slugify }}</p>#}
+{#<p>{{ url }}</p>#}
+{#<p>{{ dict.key1 }}</p>#}
+{#<p>{{ obj.a }}</p>#}
+{#<h1>{{ title|capfirst }}</h1>#}
+{#<h1>{{ title|cut:"а"|cut:"ц" }}</h1>#}
+{#<h1>{{ non_exist_title|default:"Отсутствующая переменная" }}</h1>#}
 <ul>
     {% for post in posts %}
         {% if post.is_published %}
         <li>
             <h2>{{ post.title }}</h2>
             <p>{{ post.content }}</p>
-            <p><a href="{% url %}">Читать пост</a></p>
+            <p><a href="{% url 'post' post.id%}">Читать пост</a></p>
             {% if not forloop.last %}
             <hr>
             {% endif %}
@@ -34,5 +31,5 @@
         {% endif %}
     {% endfor %}
 </ul>
-</body>
-</html>
+    {% include 'women/includes/nav.html'%}
+{% endblock %}

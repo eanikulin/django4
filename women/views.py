@@ -13,6 +13,12 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 
 menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+menu2 = [
+    {"title": "О сайте", "url_name": "about"},
+    {"title": "Добавить статью", "url_name": "add_page"},
+    {"title": "Обратная связь", "url_name": "contact"},
+    {"title": "Войти", "url_name": "login"},
+]
 
 
 class MyClass:
@@ -34,6 +40,7 @@ def index(request):
     data = {
         "title": "главная страница",
         "menu": menu,
+        "menu2": menu2,
         "float": 30.1,
         "lst": [1, "fdg", True],
         "set": {1, 2, 3, 5},
@@ -46,7 +53,7 @@ def index(request):
 
 
 def about(request):
-    return render(request, "women/about.html", {"title": "О сайте"})
+    return render(request, "women/about.html", {"title": "О сайте", "menu2": menu2})
 
 
 def categories(request, cat_id):
@@ -81,3 +88,15 @@ def page_not_found(request, exception):
 
 def show_post(request, post_id):
     return HttpResponse(f"<p>Отображение статьи с ID: {post_id}</p>")
+
+
+def addpage(request):
+    return HttpResponse("Добавление статьи")
+
+
+def contact(request):
+    return HttpResponse("Обратная связь")
+
+
+def login(request):
+    return HttpResponse("Авторизация")

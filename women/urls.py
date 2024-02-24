@@ -19,4 +19,7 @@ urlpatterns = [
     # re_path(r"^archive/(?P<year>[0-9]{4})/", views.archive)
     path("archive/<year4:year>/", views.archive, name="archive"),
     path("post/<int:post_id>/", views.show_post, name="post"),
+    path("addpage/", views.addpage, name="add_page"),
+    path("contact/", views.contact, name="contact"),
+    path("login/", views.login, name="login"),
 ]
