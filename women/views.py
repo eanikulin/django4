@@ -1,8 +1,16 @@
-from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.http import (
+    Http404,
+    HttpResponse,
+    HttpResponseNotFound,
+    HttpResponseRedirect,
+)
+from django.shortcuts import (
+    redirect,
+    render,
+)
 from django.template.defaultfilters import slugify
-from django.urls import reverse
 from django.template.loader import render_to_string
+from django.urls import reverse
 
 menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
 
@@ -69,3 +77,7 @@ def archive(request, year):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound(f"<p>Страница не найдена</p>")
+
+
+def show_post(request, post_id):
+    return HttpResponse(f"<p>Отображение статьи с ID: {post_id}</p>")

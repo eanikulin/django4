@@ -1,0 +1,8 @@
+[flake8]
+ignore = W503, W291
+max-line-length = 120
+exclude = .git,__pycache__,.venv
+statistics = True
+count = True
+no-accept-encodings = True
+per-file-ignores = __init__.py:F401
